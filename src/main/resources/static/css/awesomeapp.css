@@ -1,0 +1,12 @@
+header{
+	margin-bottom: 1em;
+}
+#main{
+	background-color: #f9f9f9;
+}
+footer{
+	background-color: #555;
+	padding:1em 0;
+	margin-top: 5em;
+	color: #ffffff;
+}

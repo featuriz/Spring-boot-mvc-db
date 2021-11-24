@@ -1,0 +1,23 @@
+<html>
+
+<head th:replace="_head :: common_header(~{::title})">
+	<title>User - Featuriz</title>
+</head>
+
+<body>
+	<header th:replace="_menu :: menu"></header>
+	<div id="main" class="container">
+		<div class="row">
+			<div class="col-6">
+				<h1>User Page</h1>
+				<p>Contains information about User.</p>
+			</div>
+			<div class="col-6">
+				<section th:replace="_right :: right"></section>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="_footer :: footer"></footer>
+</body>
+
+</html>
