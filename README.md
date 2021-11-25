@@ -6,15 +6,15 @@ __Featuriz__ guide to *Spring Framework 5*.
 
 | __Spring__ | __Version__ |
 | --- | --- |
-| Spring Boot | 2.6 |
+| Spring Boot | 2.6.0 |
 | Spring web | 5.3.13 |
 | Spring Security | 5.6.0 |
 | Spring Test | 5.3.13 |
 | Thymeleaf | 3.0.12.RELEASE |
-| Spring JPA | 5.3.13 |
-| Mariadb | 5.3.13 |
-| Lombok | 5.3.13 |
-| Validation | 5.3.13 |
+| Spring JPA | 2.6.0 |
+| Mariadb | 2.7.4 |
+| Lombok | 1.18.22 |
+| Validation | 2.6.0 |
 | Bootstrap | 5.0.2 |
 
 - Database based authentication is provided.
