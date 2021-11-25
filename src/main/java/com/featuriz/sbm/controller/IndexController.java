@@ -19,11 +19,6 @@ public class IndexController {
 		return "home";
 	}
 
-	@RequestMapping("/login")
-	public String loginPage() {
-		return "login";
-	}
-
 	@RequestMapping("/user")
 	public String userPage() {
 		return "user";
