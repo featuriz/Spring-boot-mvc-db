@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
@@ -22,6 +24,7 @@ import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuc
  */
 public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler implements LogoutSuccessHandler {
 	private static final Logger logger = LogManager.getLogger();
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     public CustomLogoutSuccessHandler() {
         super();
@@ -33,6 +36,7 @@ public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler im
 		logger.info("Logout Success: {}",refererUrl);
         System.out.println(refererUrl);
 
-        super.onLogoutSuccess(request, response, authentication);
+//        super.onLogoutSuccess(request, response, authentication);
+        this.redirectStrategy.sendRedirect(request, response, "/login?logout=true");
     }
 }

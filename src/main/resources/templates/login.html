@@ -12,10 +12,7 @@
 		<div class="row">
 			<div class="col-6 text-center">
 				<h1>Log In</h1>
-				<div th:if="${param.error}">
-					Invalid username and password.</div>
-				<div th:if="${param.logout}">
-					You have been logged out.</div>
+				<div th:text="${msg}"></div>
 				<form th:action="@{/perform_login}" method="post" class="mx-auto">
 					<div>
 						<input type="text" name="user_name" placeholder="Username" />
