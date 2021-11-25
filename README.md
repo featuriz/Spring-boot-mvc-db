@@ -1,4 +1,4 @@
-# Spring-boot-mvc-mem
+# Spring-boot-mvc-db
 
 __Featuriz__ guide to *Spring Framework 5*.
 
@@ -23,6 +23,15 @@ __Featuriz__ guide to *Spring Framework 5*.
 This is a maven based spring boot project. Use maven to build this project and just run.  
 _No other dependencies_
 
+#### Database
+Create an empty database with the name _tut_sb_mvc_db_ 
+    - If already exist - truncate 
+    - spring.sql.init.mode=never    __Note:__ Change to always, only for __first run__
+    - data will be automatically added from data.sql from resources folder.
+    
+#### Error
+If there is no role in DB table, then it will throw error while registering new User.
+
 ## NOTE
 
 ### IndexController
@@ -42,7 +51,7 @@ _No other dependencies_
 
 | __Username__ | __Password__ |
 | --- | --- |
-| admin | adminPass |
+| sudhakar | sudhakar |
 | user1 | user1Pass |
 | user2 | user2Pass |
 
