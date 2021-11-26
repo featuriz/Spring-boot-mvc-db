@@ -1,13 +1,11 @@
 /**
- * 
+ *
  */
 package com.featuriz.sbm.controller;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,13 +58,13 @@ public class LoginController {
 		return "registration";
 	}
 
-	@RequestMapping(value = "/admin/home", method = RequestMethod.GET)
-	public String home(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByUserName(auth.getName());
-		model.addAttribute("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName()
-				+ " (" + user.getEmail() + ")");
-		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
-		return "admin/home";
-	}
+//	@RequestMapping(value = "/admin/home", method = RequestMethod.GET)
+//	public String home(Model model) {
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		User user = userService.findUserByUserName(auth.getName());
+//		model.addAttribute("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName()
+//				+ " (" + user.getEmail() + ")");
+//		model.addAttribute("adminMessage", "Content Available Only for Users with Admin Role");
+//		return "admin/home";
+//	}
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.featuriz.sbm.service;
 
@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.featuriz.sbm.entity.Role;
 import com.featuriz.sbm.entity.User;
+import com.featuriz.sbm.repository.UserRepository;
 
 /**
  * @author Sudhakar Krishnan <featuriz@gmail.com>
@@ -32,19 +31,21 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@Override
-	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		User user = userService.findUserByUserName(userName);
 		if (user == null) {
-            throw new UsernameNotFoundException("Username not found!");
-        }
+			throw new UsernameNotFoundException("Username not found!");
+		}
 		List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
 		return buildUserForAuthentication(user, authorities);
 	}
 
 	private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
-		Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
+		Set<GrantedAuthority> roles = new HashSet<>();
 		for (Role role : userRoles) {
 			roles.add(new SimpleGrantedAuthority(role.getRole()));
 		}
@@ -55,6 +56,10 @@ public class MyUserDetailsService implements UserDetailsService {
 	private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
 		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
 				user.getActive(), true, true, true, authorities);
+	}
+
+	public User findByLogin(String login) {
+		return userRepository.findByUserName(login);
 	}
 
 }

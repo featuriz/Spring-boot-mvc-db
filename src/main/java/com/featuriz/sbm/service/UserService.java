@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.featuriz.sbm.service;
 
@@ -22,18 +22,24 @@ import com.featuriz.sbm.repository.UserRepository;
  */
 @Service
 public class UserService {
+	@Autowired
 	private UserRepository userRepository;
+	@Autowired
 	private RoleRepository roleRepository;
-
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Autowired
-	public UserService(UserRepository userRepository, RoleRepository roleRepository,
-			BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.userRepository = userRepository;
-		this.roleRepository = roleRepository;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	/**
+	 * THIS IS ONLY FOR TESTING. SHORTCUT.
+	 * @param mockUserRepository
+	 * @param mockRoleRepository
+	 * @param mockBCryptPasswordEncoder
+	 */
+	public UserService(UserRepository mockUserRepository, RoleRepository mockRoleRepository,
+			BCryptPasswordEncoder mockBCryptPasswordEncoder) {
+		this.userRepository = mockUserRepository;
+		this.roleRepository = mockRoleRepository;
+		this.bCryptPasswordEncoder = mockBCryptPasswordEncoder;
 	}
 
 	public User findUserByEmail(String email) {
@@ -48,7 +54,7 @@ public class UserService {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setActive(true);
 		Role userRole = roleRepository.findByRole("ROLE_USER");
-		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 		return userRepository.save(user);
 	}
 }

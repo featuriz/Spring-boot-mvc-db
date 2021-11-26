@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.featuriz.sbm.security.handler;
 
@@ -34,7 +34,8 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 //		String jsonPayload = "{\"message\" : \"%s\", \"timestamp\" : \"%s\" }";
 //		response.getOutputStream()
 //				.println(String.format(jsonPayload, exception.getMessage(), Calendar.getInstance().getTime()));
-		super.onAuthenticationFailure(request, response, exception);
+//		super.onAuthenticationFailure(request, response, exception);
+		response.sendRedirect(request.getContextPath() + "/login?error=true");
 	}
 
 }
